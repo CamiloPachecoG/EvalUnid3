@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <div class="card">
+      <div class="card-header">
+        <h5>Cliente: {{this.pedidosServicio.pedido.nombreCliente}}</h5>
+      </div>
+      <div class="card-body">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ProductoID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Total Producto</th>
+                <th scope="col"> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let producto of this.pedidosServicio.pedido.pedidoDetalle; let posicion = index">
+  
+                <td>{{producto.productoID}}</td>
+                <td>{{producto.nombreProducto}}</td>
+                <td><input (input)="calcularTotal(posicion)" [(ngModel)]="producto.cantidad" type="text"> </td>
+                <td>{{producto.precio | currency: '$'}}</td>
+                <td>{{producto.total | currency: '$'}}</td>
+                <td><button class="btn btn-outline-danger" (click)="eliminar(posicion)">Eliminar</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <h6>Total Factura: {{this.pedidosServicio.pedido.total | currency: '$'}} </h6>
+          <button class="btn btn-outline-success mt-2" (click)="guardar()">Pagar</button>
+          <button class="btn btn-outline-primary mt-2 ml-3" (click)="seguirComprando()">Seguir Comprando</button>
+      </div>
+    </div> 
+  </div>
+  

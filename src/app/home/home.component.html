@@ -1,0 +1,28 @@
+<div class="container mt-5">
+
+    <form action="" class="form-group">
+        <input type="text" class="form-control" placeholder="Busque un cliente">
+        <!--(input)="buscarClientes($event.target.value)"-->
+    </form>
+
+    <button routerLink="/agregar-Clientes" class="btn btn-outline-primary"> Agregar Cliente</button>
+
+    <div class="row mt-4">
+        <div class="col-sm-4" *ngFor="let cliente of clientes | paginate: {itemsPerPage: 3, currentPage: page}">
+            <div class="card mt-3">
+                <div class="card-body">
+                  <h5 class="card-title">Nombre Cliente: {{cliente.nombre}}  {{cliente.apellido}}</h5>
+                  <!--<h6 class="card-subtitle">{{cliente.clienteID}}</h6>-->
+                  <p class="card-text">Dirección: {{cliente.direccion}}</p>
+                  <p class="card-text">Ciudad: {{cliente.ciudad}}</p>
+                  <p class="card-text">Tipo de Tarjeta: {{cliente.tipoTarjeta}}</p>
+                  <button (click)="irAProductos(cliente)" class="btn btn-outline-primary">Seleccionar</button>
+                </div>
+              </div>
+        </div>
+    </div>
+    <div class="row mt-5 justify-content-center">
+        <pagination-controls (pageChange) = "page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+    </div>
+</div>
+

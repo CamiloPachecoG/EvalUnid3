@@ -1,0 +1,28 @@
+<div class="container mt-5">
+
+    <form action="" class="form-group">
+        <input type="text" class="form-control" placeholder="Busque un producto">
+        <!--(input)="buscarProductos($event.target.value)"-->
+    </form>
+
+    <button routerLink="/agregar-productos" class="btn btn-outline-primary"> Agregar Producto</button>
+    <!--<button class="btn btn-outline-primary ml-2" (click)="eliminarTodosLS()">Eliminar Todos</button>-->
+    <div class="row mt-4">
+        <div class="col-sm-4" *ngFor ="let producto of productos | paginate: {itemsPerPage: 3, currentPage: page}">
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Producto: {{producto.nombre}}</h5>
+                  <!--<h6 class="card-subtitle">{{producto.productoID}}</h6>-->
+                  <p class="card-text">Descripción: {{producto.descripcion}}</p>
+                  <p class="card-text">Precio: {{producto.precio | currency:'$'}}</p>
+                  <button (click)="agregar(producto)" class="btn btn-outline-primary">Agregar al Carrito</button>
+                </div>
+              </div>
+        </div>
+    </div>
+    <div class="row mt-5 justify-content-center">
+        <pagination-controls (pageChange) = "page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+    </div>
+</div>
+
+

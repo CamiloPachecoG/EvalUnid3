@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">SuperMercado</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav flex-row w-100">
+        <li class="nav-item">
+          <a class="nav-link" routerLink ="/" routerLinkActive="active" [routerLinkActiveOptions] = "{exact: true}">Inicio</a> 
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink ="/productos" routerLinkActive="active">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink ="/Historial-Compras" routerLinkActive="active">Historial de pedidos</a> 
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink ="/carrito" routerLinkActive="active">Carrito de Compra</a>
+          </li>
+          <li class = "navbar-text ml-auto p-2">
+             Cliente: {{this.pedidosServicio.pedido.nombreCliente}}
+          </li>
+      </ul>
+    </div>
+  </nav>
